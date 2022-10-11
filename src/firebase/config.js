@@ -2,17 +2,47 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore/lite';
+import { getEnvironments } from "../helpers/getEnvironments";
+
+
+const {
+  VITE_APIKEY,
+  VITE_AUTHDOMAIN,
+  VITE_DATABASEURL,
+  VITE_PROJECTID,
+  VITE_STORAGEBUCKET,
+  VITE_MESSAGINGSENDERID,
+  VITE_APPID,
+  VITE_MEASUREMENTID
+} = getEnvironments();
+
+
+// console.log(import.meta.env)
+// console.log(process.env)
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+// dev/Prop
+// const firebaseConfig = {
+//   apiKey: APIKEY,
+//   authDomain: AUTHDOMAIN,
+//   projectId: PROJECTID,
+//   storageBucket: STORAGEBUCKET,
+//   messagingSenderId: MESSAGINGSENDERID,
+//   appId: APPID,
+// };
+
+//TEsting
 const firebaseConfig = {
-  apiKey: "AIzaSyDmRST9aVXG9fInDJIxKjNkwkf2xa5Tf6M",
-  authDomain: "react-calendar-5b155.firebaseapp.com",
-  projectId: "react-calendar-5b155",
-  storageBucket: "react-calendar-5b155.appspot.com",
-  messagingSenderId: "507293466974",
-  appId: "1:507293466974:web:a30643708332b24093cfcf"
+  apiKey: VITE_APIKEY,
+  authDomain: VITE_AUTHDOMAIN,
+  databaseURL: VITE_DATABASEURL,
+  projectId: VITE_PROJECTID,
+  storageBucket: VITE_STORAGEBUCKET,
+  messagingSenderId: VITE_MESSAGINGSENDERID,
+  appId: VITE_APPID,
+  measurementId: VITE_MEASUREMENTID,
 };
 
 // Initialize Firebase

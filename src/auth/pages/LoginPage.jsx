@@ -20,6 +20,7 @@ export const LoginPage = () => {
   const isAuthenticated = useMemo(() => status === 'checking', [status]);
   const onSubmit = (event) => {
     event.preventDefault();
+    console.log({email,password})
     dispatch(startLoginWithEmailPassword({email,password}))
   }
   
@@ -30,7 +31,10 @@ export const LoginPage = () => {
 
   return (
     <AuthLayout title="Login">
-      <form onSubmit={onSubmit} className='animate__animated animate__fadeIn animate__faster'>
+      <form 
+          aria-label="submit-form"
+          onSubmit={onSubmit} 
+          className='animate__animated animate__fadeIn animate__faster'>
           <Grid container>
             <Grid item xs={ 12 } sx={{ mt: 2 }}>
               <TextField 
@@ -51,6 +55,9 @@ export const LoginPage = () => {
                 placeholder='Contraseña' 
                 fullWidth
                 name="password"
+                inputProps={{
+                  'data-testid': 'password'
+                }}
                 value={password}
                 onChange={onInputChange}
               />
@@ -75,6 +82,7 @@ export const LoginPage = () => {
                 <Button variant='contained'  disabled={isAuthenticated} 
                         type='button' 
                         onClick={onGoogleSignIn} 
+                        aria-label="google-btn"
                         fullWidth>
                   <Google />
                   <Typography sx={{ ml: 1 }}>Google</Typography>
